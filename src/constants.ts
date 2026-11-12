@@ -144,19 +144,19 @@ date: {{date}}
 ---
 
 ## 1. Einstieg – Bezug zur Position
-[Interesse · Anknüpfungspunkte · roter Faden]
+_Interesse · Anknüpfungspunkte · roter Faden_
 
 ## 2. Relevante Erfahrung & Fachkenntnisse
-[Projekte · berufliche Erfahrung · technische Kenntnisse · konkrete Beispiele]
+_Projekte · berufliche Erfahrung · technische Kenntnisse · konkrete Beispiele_
 
 ## 3. Arbeitsweise & Kompetenzen
-[Analytisches Denken · Problemlösung · Lernbereitschaft · Kommunikation · Schnittstellen]
+_Analytisches Denken · Problemlösung · Lernbereitschaft · Kommunikation · Schnittstellen_
 
 ## 4. Motivation & Bezug zur Organisation
-[Aufgabenbereich · Unternehmen · Branche · persönlicher Bezug · Beitrag]
+_Aufgabenbereich · Unternehmen · Branche · persönlicher Bezug · Beitrag_
 
 ## Abschluss
-[Persönliches Kennenlernen · Grußformel]
+_Persönliches Kennenlernen · Grußformel_
 `;
 
 export const DEFAULT_SETTINGS: JobApplicationTrackerSettings = {
