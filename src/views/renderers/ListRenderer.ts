@@ -1,4 +1,4 @@
-import { setIcon } from "obsidian";
+import { Notice, setIcon } from "obsidian";
 import { JobApplication } from "../../types";
 import { getStatusClassName } from "../../constants";
 import { UpdateStatusModal } from "../../modals/UpdateStatusModal";
@@ -129,6 +129,22 @@ export class ListRenderer {
 
 			// Actions
 			const actions = item.createDiv({ cls: "job-tracker-list-actions" });
+
+			const hasLetter = this.view.plugin.appService.findCoverLetter(app) !== null;
+			const letterBtn = actions.createEl("button", {
+				cls: "job-tracker-action-pill-btn",
+				text: hasLetter ? "Letter" : "+ Letter",
+			});
+			letterBtn.onclick = async () => {
+				try {
+					const letterFile = await this.view.plugin.appService.openOrCreateCoverLetter(app);
+					letterBtn.setText("Letter");
+					await this.view.openNote(letterFile.path);
+				} catch (err) {
+					console.error("Job Tracker: Failed to open cover letter:", err);
+					new Notice(`Could not open cover letter: ${err instanceof Error ? err.message : "Unknown error"}`);
+				}
+			};
 
 			const addIvBtn = actions.createEl("button", {
 				cls: "job-tracker-action-pill-btn",

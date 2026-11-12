@@ -130,6 +130,35 @@ date: "{{date}}"
 - **Follow-up / Thank You Sent:** [ ] Yes  [ ] No
 `;
 
+/** Sub-folder of the tracker folder where cover letter notes are created. */
+export const COVER_LETTER_SUBFOLDER = 'letters';
+
+/**
+ * Template for a new cover letter note.
+ * Placeholders: {{applicationLink}}, {{date}}
+ */
+export const DEFAULT_COVER_LETTER_TEMPLATE = `---
+type: cover-letter
+application: "[[{{applicationLink}}]]"
+date: {{date}}
+---
+
+## 1. Einstieg – Bezug zur Position
+[Interesse · Anknüpfungspunkte · roter Faden]
+
+## 2. Relevante Erfahrung & Fachkenntnisse
+[Projekte · berufliche Erfahrung · technische Kenntnisse · konkrete Beispiele]
+
+## 3. Arbeitsweise & Kompetenzen
+[Analytisches Denken · Problemlösung · Lernbereitschaft · Kommunikation · Schnittstellen]
+
+## 4. Motivation & Bezug zur Organisation
+[Aufgabenbereich · Unternehmen · Branche · persönlicher Bezug · Beitrag]
+
+## Abschluss
+[Persönliches Kennenlernen · Grußformel]
+`;
+
 export const DEFAULT_SETTINGS: JobApplicationTrackerSettings = {
   trackerFolderPath: 'job applications',
   interviewNotesFolderPath: 'job applications/interviews',

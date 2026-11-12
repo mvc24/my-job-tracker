@@ -71,6 +71,7 @@ export interface JobApplication {
 	filePath: string;
 	company: string;
 	role: string;
+	shortName?: string; // Short label used for file names
 	status: JobStatus;
 	dateApplied: string; // YYYY-MM-DD
 	lastUpdated: string; // YYYY-MM-DD
@@ -105,6 +106,7 @@ export interface JobApplicationFrontMatter {
 	type?: string;
 	company?: string;
 	role?: string;
+	shortName?: string;
 	status?: JobStatus;
 	dateApplied?: string;
 	lastUpdated?: string;

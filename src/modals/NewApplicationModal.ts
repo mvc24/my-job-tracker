@@ -12,6 +12,7 @@ export class NewApplicationModal extends Modal {
 
   private company = '';
   private role = '';
+  private shortName = '';
   private status: JobStatus;
   private dateApplied = '';
   private location = '';
@@ -64,6 +65,17 @@ export class NewApplicationModal extends Modal {
         text.inputEl.maxLength = 150;
         text.setPlaceholder('e.g. Chief Nincompoop').onChange((value) => {
           this.role = value;
+        });
+      });
+
+    // Short name
+    new Setting(contentEl)
+      .setName('Short name')
+      .setDesc('Used for file names. If empty, the company name is used.')
+      .addText((text) => {
+        text.inputEl.maxLength = 60;
+        text.setPlaceholder('e.g. Wien Archiv').onChange((value) => {
+          this.shortName = value;
         });
       });
 
@@ -344,6 +356,7 @@ export class NewApplicationModal extends Modal {
       const file = await this.plugin.appService.createApplication({
         company: this.company.trim(),
         role: this.role.trim(),
+        shortName: this.shortName.trim() || undefined,
         status: this.status,
         dateApplied: this.dateApplied.trim(),
         location: this.location.trim(),
