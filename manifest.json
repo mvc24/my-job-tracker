@@ -1,11 +1,11 @@
 {
-	"id": "job-application-tracker",
-	"name": "Job Application Tracker",
-	"version": "1.1.0",
-	"minAppVersion": "1.7.2",
-	"description": "Track job applications, contacts, and interviews with Kanban, Table, List, and Sankey analytics dashboards.",
-	"author": "cruisencode",
-	"authorUrl": "https://github.com/cruisencode",
-	"fundingUrl": "https://www.paypal.com/ncp/payment/RU38X6DN7W2V6",
-	"isDesktopOnly": false
+    "id": "my-job-tracker",
+    "name": "My job tracker",
+    "version": "1.1.0",
+    "minAppVersion": "1.7.2",
+    "description": "based on Job Application Tracker",
+    "author": "mvc",
+    "authorUrl": "",
+    "fundingUrl": "",
+    "isDesktopOnly": false
 }

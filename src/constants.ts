@@ -1,38 +1,52 @@
-import { EmploymentType, JobApplicationTrackerSettings, JobStatus, WorkplaceType } from "./types";
+import {
+  EmploymentType,
+  JobApplicationTrackerSettings,
+  JobStatus,
+  WorkplaceType,
+} from './types';
 
-export const VIEW_TYPE_JOB_TRACKER = "job-application-tracker-view";
+export const VIEW_TYPE_JOB_TRACKER = 'job-application-tracker-view';
 
 /**
  * Sanitizes a status string for safe usage in CSS class names.
  */
 export function getStatusClassName(status: string): string {
-	return "status-" + (status || "").toLowerCase().trim().replace(/[^a-z0-9-]/g, "-");
+  return (
+    'status-' +
+    (status || '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9-]/g, '-')
+  );
 }
 
-export const WORKPLACE_OPTIONS: readonly WorkplaceType[] = ["Remote", "Hybrid", "On-site"];
-export const EMPLOYMENT_OPTIONS: readonly EmploymentType[] = ["Full-time", "Contract", "Part-time", "Internship"];
+export const WORKPLACE_OPTIONS: readonly WorkplaceType[] = [
+  'Remote',
+  'Hybrid',
+  'On-site',
+];
+export const EMPLOYMENT_OPTIONS: readonly EmploymentType[] = [
+  'Full-time',
+  'Contract',
+  'Part-time',
+  'Internship',
+];
 
 export const DEFAULT_STATUSES: JobStatus[] = [
-	"Wishlist",
-	"Applied",
-	"Screening",
-	"Interviewing",
-	"Offer",
-	"Accepted",
-	"Rejected",
-	"Withdrawn",
-	"Ghosted",
+  'Interesting',
+  'Applied',
+  'Interview',
+  'Rejected',
+  'Withdrawn',
+  'Ghosted',
+  "Let's hope",
 ];
 
 export const DEFAULT_SOURCE_OPTIONS: string[] = [
-	"LinkedIn",
-	"Company Website",
-	"Referral",
-	"Indeed",
-	"Wellfound (AngelList)",
-	"Otta",
-	"Recruiter Reachout",
-	"Other",
+  'MyAbility',
+  'LinkedIn',
+  'Company Website',
+  'other',
 ];
 
 export const DEFAULT_INTERVIEW_PREP_TEMPLATE = `---
@@ -45,17 +59,17 @@ date: "{{date}}"
 
 # Interview Prep: {{roundName}} - {{company}} ({{role}})
 
-> **Date & Time:** {{date}} {{time}}  
-> **Interviewers / Panel:** {{interviewers}}  
+> **Date & Time:** {{date}} {{time}}
+> **Interviewers / Panel:** {{interviewers}}
 > **Application Note:** [[{{applicationNoteTitle}}]]
 
 ---
 
 ## 🏢 Company Intelligence & Team Context
-- **Business Model / Mission:** 
-- **Recent Product Launches & News:** 
-- **Tech Stack & Engineering Architecture:** 
-- **Team Scope & Why This Role is Open:** 
+- **Business Model / Mission:**
+- **Recent Product Launches & News:**
+- **Tech Stack & Engineering Architecture:**
+- **Team Scope & Why This Role is Open:**
 
 ---
 
@@ -68,29 +82,29 @@ date: "{{date}}"
 
 ## 💡 STAR Stories & Key Scenarios
 ### 1. Complex Technical / Cross-functional Challenge
-- **Situation:** 
-- **Task:** 
-- **Action:** 
-- **Result & Metric:** 
+- **Situation:**
+- **Task:**
+- **Action:**
+- **Result & Metric:**
 
 ### 2. High-Impact Delivery / Innovation Win
-- **Situation:** 
-- **Task:** 
-- **Action:** 
-- **Result & Metric:** 
+- **Situation:**
+- **Task:**
+- **Action:**
+- **Result & Metric:**
 
 ---
 
 ## 🛠️ Technical & Architecture Focus Areas
-- **Core Topics to Review:** 
-- **Potential Deep-Dive Scenarios:** 
-- **Key Concepts / Code Examples:** 
+- **Core Topics to Review:**
+- **Potential Deep-Dive Scenarios:**
+- **Key Concepts / Code Examples:**
 
 ---
 
 ## 💰 Compensation & Target Range
-- **Target Base / Total Comp:** 
-- **Notes on Benefits & Equity:** 
+- **Target Base / Total Comp:**
+- **Notes on Benefits & Equity:**
 
 ---
 
@@ -110,19 +124,19 @@ date: "{{date}}"
 ---
 
 ## 📝 Post-Interview Debrief & Action Items
-- **Overall Impressions & Sentiment:** 
-- **What Went Well:** 
-- **Areas to Improve / Follow Up On:** 
+- **Overall Impressions & Sentiment:**
+- **What Went Well:**
+- **Areas to Improve / Follow Up On:**
 - **Follow-up / Thank You Sent:** [ ] Yes  [ ] No
 `;
 
 export const DEFAULT_SETTINGS: JobApplicationTrackerSettings = {
-	trackerFolderPath: "Job Applications",
-	interviewNotesFolderPath: "Job Applications/Interviews",
-	attachmentsFolderPath: "Job Applications/Attachments",
-	statuses: DEFAULT_STATUSES,
-	defaultStatus: "Applied",
-	interviewPrepTemplate: DEFAULT_INTERVIEW_PREP_TEMPLATE,
-	defaultSourceOptions: DEFAULT_SOURCE_OPTIONS,
-	openViewLocation: "tab",
+  trackerFolderPath: 'job applications',
+  interviewNotesFolderPath: 'job applications/interviews',
+  attachmentsFolderPath: 'job applications/attachments',
+  statuses: DEFAULT_STATUSES,
+  defaultStatus: 'Interesting',
+  interviewPrepTemplate: DEFAULT_INTERVIEW_PREP_TEMPLATE,
+  defaultSourceOptions: DEFAULT_SOURCE_OPTIONS,
+  openViewLocation: 'tab',
 };
