@@ -56,8 +56,8 @@ export function getNodeColor(id: string): string {
 export function getStageRank(id: string): number {
 	const lower = id.toLowerCase().trim();
 	// Drop-offs / terminal outcomes at the bottom
-	if (lower.includes("ghosted")) return 110;
-	if (lower.includes("rejected")) return 130;
+	if (lower.includes("rejected")) return 110;
+	if (lower.includes("ghosted")) return 130;
 
 	// Positive progression at the top
 	if (lower.includes("interesting")) return 10;

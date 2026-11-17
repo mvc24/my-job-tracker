@@ -2,9 +2,9 @@ export type DefaultJobStatus =
 	| "Interesting"
 	| "In preparation"
 	| "Applied"
-	| "Rejected"
 	| "Interview"
 	| "Let's hope"
+	| "Rejected"
 	| "Ghosted";
 
 export type JobStatus = DefaultJobStatus | (string & {});

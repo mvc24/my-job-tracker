@@ -36,9 +36,9 @@ export const DEFAULT_STATUSES: JobStatus[] = [
   'Interesting',
   'In preparation',
   'Applied',
-  'Rejected',
   'Interview',
   "Let's hope",
+  'Rejected',
   'Ghosted',
 ];
 
