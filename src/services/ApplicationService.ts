@@ -1234,18 +1234,18 @@ export class ApplicationService {
             fm.interviews.push(interview);
             fm.lastUpdated = today;
 
-            // Bump status to Interviewing unless already in Interviewing or a later status (e.g. Offer or final)
+            // Bump status to Interview unless already in Interview or a later status (Let's hope or final)
             const currentStatus = fm.status || 'Applied';
             if (
               autoUpdateStatus &&
-              currentStatus !== 'Interviewing' &&
-              currentStatus !== 'Offer' &&
+              currentStatus !== 'Interview' &&
+              currentStatus !== "Let's hope" &&
               !isFinalStatus(currentStatus)
             ) {
-              fm.status = 'Interviewing';
+              fm.status = 'Interview';
               if (!Array.isArray(fm.statusHistory)) fm.statusHistory = [];
               fm.statusHistory.push({
-                status: 'Interviewing',
+                status: 'Interview',
                 date: today,
                 note: `Scheduled interview: ${interview.roundName}`,
               });

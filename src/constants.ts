@@ -34,12 +34,12 @@ export const EMPLOYMENT_OPTIONS: readonly EmploymentType[] = [
 
 export const DEFAULT_STATUSES: JobStatus[] = [
   'Interesting',
+  'In preparation',
   'Applied',
-  'Interview',
   'Rejected',
-  'Withdrawn',
-  'Ghosted',
+  'Interview',
   "Let's hope",
+  'Ghosted',
 ];
 
 export const DEFAULT_SOURCE_OPTIONS: string[] = [
@@ -143,20 +143,22 @@ application: "[[{{applicationLink}}]]"
 date: {{date}}
 ---
 
-## 1. Einstieg – Bezug zur Position
-_Interesse · Anknüpfungspunkte · roter Faden_
+## prep
 
-## 2. Relevante Erfahrung & Fachkenntnisse
-_Projekte · berufliche Erfahrung · technische Kenntnisse · konkrete Beispiele_
 
-## 3. Arbeitsweise & Kompetenzen
-_Analytisches Denken · Problemlösung · Lernbereitschaft · Kommunikation · Schnittstellen_
 
-## 4. Motivation & Bezug zur Organisation
-_Aufgabenbereich · Unternehmen · Branche · persönlicher Bezug · Beitrag_
+## gpt version
 
-## Abschluss
-_Persönliches Kennenlernen · Grußformel_
+
+## Claude Skill version
+
+
+## edits
+
+
+## final version
+
+
 `;
 
 export const DEFAULT_SETTINGS: JobApplicationTrackerSettings = {

@@ -165,7 +165,7 @@ export class JobApplicationTrackerSettingTab extends PluginSettingTab {
 										.setTooltip("Reset to default pipeline stages")
 										.onClick(async () => {
 											this.plugin.settings.statuses = [...DEFAULT_STATUSES];
-											this.plugin.settings.defaultStatus = "Applied";
+											this.plugin.settings.defaultStatus = DEFAULT_SETTINGS.defaultStatus;
 											await this.plugin.saveSettings();
 											if (stagesTextArea) {
 												stagesTextArea.setValue(DEFAULT_STATUSES.join(", "));

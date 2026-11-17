@@ -349,7 +349,7 @@ export class ManageApplicationModal extends BaseApplicationModal {
       titleRow.createEl('strong', { text: iv.roundName });
       titleRow.createSpan({
         text: iv.status,
-        cls: `job-tracker-status-badge ${iv.status === 'Completed' ? 'status-offer' : iv.status === 'Cancelled' ? 'status-rejected' : 'status-interviewing'}`,
+        cls: `job-tracker-status-badge ${iv.status === 'Completed' ? 'status-let-s-hope' : iv.status === 'Cancelled' ? 'status-rejected' : 'status-interview'}`,
       });
 
       const detailsRow = infoDiv.createDiv({ cls: 'job-tracker-list-details' });

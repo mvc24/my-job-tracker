@@ -24,8 +24,8 @@ export class MetricsRenderer {
 		// 1. KPI Cards Grid
 		const kpiGrid = metricsContainer.createDiv({ cls: "job-tracker-kpi-grid" });
 
-		this.renderKpiCard(kpiGrid, "Total Applications", `${m.totalApps}`, "briefcase", `${m.appliedTotal} submitted, ${m.wishlistCount} wishlist`);
-		this.renderKpiCard(kpiGrid, "Active Pipeline", `${m.activeCount}`, "activity", "In progress & active offers");
+		this.renderKpiCard(kpiGrid, "Total Applications", `${m.totalApps}`, "briefcase", `${m.appliedTotal} submitted, ${m.wishlistCount} not yet applied`);
+		this.renderKpiCard(kpiGrid, "Active Pipeline", `${m.activeCount}`, "activity", "Applied, Interview & Let's hope");
 		this.renderKpiCard(kpiGrid, "Response Rate", `${m.responseRate}%`, "mail", `${m.respondedCount} of ${m.appliedTotal} submitted`);
 		this.renderKpiCard(kpiGrid, "Interview Rate", `${m.interviewRate}%`, "calendar-check", `${m.interviewCount} of ${m.appliedTotal} submitted`);
 		this.renderKpiCard(

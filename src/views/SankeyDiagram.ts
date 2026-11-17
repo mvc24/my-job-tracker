@@ -25,13 +25,11 @@ export function getNodeColor(id: string): string {
 	const lower = id.toLowerCase();
 	if (lower.includes("rejected")) return "var(--color-red, #ef4444)";
 	if (lower.includes("ghosted")) return "var(--color-orange, #ea580c)";
-	if (lower.includes("withdrawn")) return "var(--color-base-60, #94a3b8)";
-	if (lower.includes("accepted")) return "var(--color-green, #10b981)";
-	if (lower.includes("offer")) return "var(--color-yellow, #f59e0b)";
-	if (lower.includes("interviewing")) return "var(--color-blue, #3b82f6)";
-	if (lower.includes("screening")) return "var(--color-cyan, #06b6d4)";
+	if (lower.includes("let's hope")) return "var(--color-green, #10b981)";
+	if (lower.includes("interview")) return "var(--color-blue, #3b82f6)";
 	if (lower.includes("applied")) return "var(--color-purple, #8b5cf6)";
-	if (lower.includes("wishlist")) return "var(--color-slate, #94a3b8)";
+	if (lower.includes("in preparation")) return "var(--color-cyan, #06b6d4)";
+	if (lower.includes("interesting")) return "var(--color-slate, #94a3b8)";
 
 	// Source colors based on hash/palette
 	const sourcePalette = [
@@ -59,16 +57,14 @@ export function getStageRank(id: string): number {
 	const lower = id.toLowerCase().trim();
 	// Drop-offs / terminal outcomes at the bottom
 	if (lower.includes("ghosted")) return 110;
-	if (lower.includes("withdrawn")) return 120;
 	if (lower.includes("rejected")) return 130;
 
 	// Positive progression at the top
-	if (lower.includes("wishlist")) return 10;
+	if (lower.includes("interesting")) return 10;
+	if (lower.includes("in preparation")) return 15;
 	if (lower.includes("applied")) return 20;
-	if (lower.includes("screening")) return 30;
-	if (lower.includes("interviewing")) return 40;
-	if (lower.includes("offer")) return 50;
-	if (lower.includes("accepted")) return 60;
+	if (lower.includes("interview")) return 40;
+	if (lower.includes("let's hope")) return 50;
 	return 80; // default / custom statuses
 }
 
@@ -184,7 +180,7 @@ export function renderSankeyDiagram(container: HTMLElement, links: SankeyLink[],
 		for (let layer = 0; layer <= maxLayer; layer++) {
 			const nodeIds = layerGroups.get(layer) || [];
 			if (layer === 0) {
-				// Sources: sort primarily by min target stage rank (e.g. Wishlist=10 before Applied=20)
+				// Sources: sort primarily by min target stage rank (e.g. Interesting=10 before Applied=20)
 				// secondary by volume descending
 				nodeIds.sort((a, b) => {
 					const outsA = outgoingMap.get(a) || [];
@@ -339,7 +335,7 @@ export function renderSankeyDiagram(container: HTMLElement, links: SankeyLink[],
 		const targetLinkHeights = new Map<SankeyLink, number>();
 
 		// Outgoing links:
-		// 1. Sort by target layer ascending (links to earlier stages like Wishlist exit higher)
+		// 1. Sort by target layer ascending (links to earlier stages like Interesting exit higher)
 		// 2. Secondary sort by target node y position ascending
 		for (const [nodeId, outLinks] of outgoingMap.entries()) {
 			const srcNode = nodeMap.get(nodeId);
@@ -372,7 +368,7 @@ export function renderSankeyDiagram(container: HTMLElement, links: SankeyLink[],
 		}
 
 		// Incoming links:
-		// 1. Sort by source layer descending (links from closer stages like Wishlist enter higher)
+		// 1. Sort by source layer descending (links from closer stages like Interesting enter higher)
 		// 2. Secondary sort by source node y position ascending
 		for (const [nodeId, inLinks] of incomingMap.entries()) {
 			const tgtNode = nodeMap.get(nodeId);

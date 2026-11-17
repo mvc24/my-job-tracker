@@ -1,22 +1,24 @@
 export type DefaultJobStatus =
-	| "Wishlist"
+	| "Interesting"
+	| "In preparation"
 	| "Applied"
-	| "Screening"
-	| "Interviewing"
-	| "Offer"
-	| "Accepted"
 	| "Rejected"
-	| "Withdrawn"
+	| "Interview"
+	| "Let's hope"
 	| "Ghosted";
 
 export type JobStatus = DefaultJobStatus | (string & {});
 
 export const FINAL_STATUSES = [
-	"Accepted",
 	"Rejected",
-	"Withdrawn",
 	"Ghosted",
 ] as const;
+
+/** Statuses for applications that have not been submitted yet. */
+export const NOT_APPLIED_STATUSES: readonly string[] = [
+	"Interesting",
+	"In preparation",
+];
 
 export const FINAL_STATUS_SET: ReadonlySet<string> = new Set(FINAL_STATUSES);
 

@@ -4,41 +4,34 @@
 
 .job-tracker-view,
 .job-tracker-modal {
-    --job-status-wishlist: var(--color-base-70, #718096);
+    --job-status-interesting: var(--color-base-70, #718096);
     --job-status-applied: var(--color-blue, #3182ce);
-    --job-status-screening: var(--color-purple, #805ad5);
-    --job-status-interviewing: var(--color-orange, #dd6b20);
-    --job-status-offer: var(--color-yellow, #d69e2e);
-    --job-status-accepted: var(--color-green, #38a169);
+    --job-status-in-preparation: var(--color-purple, #805ad5);
+    --job-status-interview: var(--color-orange, #dd6b20);
+    --job-status-let-s-hope: var(--color-green, #38a169);
     --job-status-rejected: var(--color-red, #e53e3e);
-    --job-status-withdrawn: var(--color-base-60, #a0aec0);
     --job-status-ghosted: var(--color-base-80, #4a5568);
 
-    --job-status-wishlist-bg: color-mix(in srgb, var(--job-status-wishlist) 15%, transparent);
+    --job-status-interesting-bg: color-mix(in srgb, var(--job-status-interesting) 15%, transparent);
     --job-status-applied-bg: color-mix(in srgb, var(--job-status-applied) 15%, transparent);
-    --job-status-screening-bg: color-mix(in srgb, var(--job-status-screening) 15%, transparent);
-    --job-status-interviewing-bg: color-mix(in srgb, var(--job-status-interviewing) 15%, transparent);
-    --job-status-offer-bg: color-mix(in srgb, var(--job-status-offer) 15%, transparent);
-    --job-status-accepted-bg: color-mix(in srgb, var(--job-status-accepted) 15%, transparent);
+    --job-status-in-preparation-bg: color-mix(in srgb, var(--job-status-in-preparation) 15%, transparent);
+    --job-status-interview-bg: color-mix(in srgb, var(--job-status-interview) 15%, transparent);
+    --job-status-let-s-hope-bg: color-mix(in srgb, var(--job-status-let-s-hope) 15%, transparent);
     --job-status-rejected-bg: color-mix(in srgb, var(--job-status-rejected) 15%, transparent);
-    --job-status-withdrawn-bg: color-mix(in srgb, var(--job-status-withdrawn) 15%, transparent);
     --job-status-ghosted-bg: color-mix(in srgb, var(--job-status-ghosted) 15%, transparent);
 
-    --job-status-wishlist-border: color-mix(in srgb, var(--job-status-wishlist) 30%, transparent);
+    --job-status-interesting-border: color-mix(in srgb, var(--job-status-interesting) 30%, transparent);
     --job-status-applied-border: color-mix(in srgb, var(--job-status-applied) 30%, transparent);
-    --job-status-screening-border: color-mix(in srgb, var(--job-status-screening) 30%, transparent);
-    --job-status-interviewing-border: color-mix(in srgb, var(--job-status-interviewing) 30%, transparent);
-    --job-status-offer-border: color-mix(in srgb, var(--job-status-offer) 30%, transparent);
-    --job-status-accepted-border: color-mix(in srgb, var(--job-status-accepted) 30%, transparent);
+    --job-status-in-preparation-border: color-mix(in srgb, var(--job-status-in-preparation) 30%, transparent);
+    --job-status-interview-border: color-mix(in srgb, var(--job-status-interview) 30%, transparent);
+    --job-status-let-s-hope-border: color-mix(in srgb, var(--job-status-let-s-hope) 30%, transparent);
     --job-status-rejected-border: color-mix(in srgb, var(--job-status-rejected) 30%, transparent);
-    --job-status-withdrawn-border: color-mix(in srgb, var(--job-status-withdrawn) 30%, transparent);
     --job-status-ghosted-border: color-mix(in srgb, var(--job-status-ghosted) 30%, transparent);
 }
 
 .theme-light .job-tracker-view,
 .theme-light .job-tracker-modal {
-    --job-status-offer: #b45309;
-    --job-status-accepted: #15803d;
+    --job-status-let-s-hope: #15803d;
 }
 
 .job-tracker-view {
@@ -259,11 +252,11 @@
     color: var(--text-muted);
 }
 
-.job-tracker-status-badge.status-wishlist,
-.job-tracker-view .status-wishlist {
-    background-color: var(--job-status-wishlist-bg);
-    color: var(--job-status-wishlist);
-    border-color: var(--job-status-wishlist-border);
+.job-tracker-status-badge.status-interesting,
+.job-tracker-view .status-interesting {
+    background-color: var(--job-status-interesting-bg);
+    color: var(--job-status-interesting);
+    border-color: var(--job-status-interesting-border);
 }
 
 .job-tracker-status-badge.status-applied,
@@ -273,33 +266,25 @@
     border-color: var(--job-status-applied-border);
 }
 
-.job-tracker-status-badge.status-screening,
-.job-tracker-view .status-screening {
-    background-color: var(--job-status-screening-bg);
-    color: var(--job-status-screening);
-    border-color: var(--job-status-screening-border);
+.job-tracker-status-badge.status-in-preparation,
+.job-tracker-view .status-in-preparation {
+    background-color: var(--job-status-in-preparation-bg);
+    color: var(--job-status-in-preparation);
+    border-color: var(--job-status-in-preparation-border);
 }
 
-.job-tracker-status-badge.status-interviewing,
-.job-tracker-view .status-interviewing {
-    background-color: var(--job-status-interviewing-bg);
-    color: var(--job-status-interviewing);
-    border-color: var(--job-status-interviewing-border);
+.job-tracker-status-badge.status-interview,
+.job-tracker-view .status-interview {
+    background-color: var(--job-status-interview-bg);
+    color: var(--job-status-interview);
+    border-color: var(--job-status-interview-border);
 }
 
-.job-tracker-status-badge.status-offer,
-.job-tracker-view .status-offer {
-    background-color: var(--job-status-offer-bg);
-    color: var(--job-status-offer);
-    border-color: var(--job-status-offer-border);
-}
-
-.job-tracker-status-badge.status-accepted,
-.job-tracker-view .status-accepted {
-    background-color: var(--job-status-accepted-bg);
-    color: var(--job-status-accepted);
-    border-color: var(--job-status-accepted-border);
-    font-weight: 600;
+.job-tracker-status-badge.status-let-s-hope,
+.job-tracker-view .status-let-s-hope {
+    background-color: var(--job-status-let-s-hope-bg);
+    color: var(--job-status-let-s-hope);
+    border-color: var(--job-status-let-s-hope-border);
 }
 
 .job-tracker-status-badge.status-rejected,
@@ -307,13 +292,6 @@
     background-color: var(--job-status-rejected-bg);
     color: var(--job-status-rejected);
     border-color: var(--job-status-rejected-border);
-}
-
-.job-tracker-status-badge.status-withdrawn,
-.job-tracker-view .status-withdrawn {
-    background-color: var(--job-status-withdrawn-bg);
-    color: var(--job-status-withdrawn);
-    border-color: var(--job-status-withdrawn-border);
 }
 
 .job-tracker-status-badge.status-ghosted,
@@ -977,36 +955,28 @@
     transition: width 0.3s ease;
 }
 
-.job-tracker-progress-fill.status-wishlist {
-    background-color: var(--job-status-wishlist);
+.job-tracker-progress-fill.status-interesting {
+    background-color: var(--job-status-interesting);
 }
 
 .job-tracker-progress-fill.status-applied {
     background-color: var(--job-status-applied);
 }
 
-.job-tracker-progress-fill.status-screening {
-    background-color: var(--job-status-screening);
+.job-tracker-progress-fill.status-in-preparation {
+    background-color: var(--job-status-in-preparation);
 }
 
-.job-tracker-progress-fill.status-interviewing {
-    background-color: var(--job-status-interviewing);
+.job-tracker-progress-fill.status-interview {
+    background-color: var(--job-status-interview);
 }
 
-.job-tracker-progress-fill.status-offer {
-    background-color: var(--job-status-offer);
-}
-
-.job-tracker-progress-fill.status-accepted {
-    background-color: var(--job-status-accepted);
+.job-tracker-progress-fill.status-let-s-hope {
+    background-color: var(--job-status-let-s-hope);
 }
 
 .job-tracker-progress-fill.status-rejected {
     background-color: var(--job-status-rejected);
-}
-
-.job-tracker-progress-fill.status-withdrawn {
-    background-color: var(--job-status-withdrawn);
 }
 
 .job-tracker-progress-fill.status-ghosted {
@@ -1052,36 +1022,28 @@
     background-color: var(--text-muted);
 }
 
-.job-tracker-activity-dot.status-wishlist {
-    background-color: var(--job-status-wishlist);
+.job-tracker-activity-dot.status-interesting {
+    background-color: var(--job-status-interesting);
 }
 
 .job-tracker-activity-dot.status-applied {
     background-color: var(--job-status-applied);
 }
 
-.job-tracker-activity-dot.status-screening {
-    background-color: var(--job-status-screening);
+.job-tracker-activity-dot.status-in-preparation {
+    background-color: var(--job-status-in-preparation);
 }
 
-.job-tracker-activity-dot.status-interviewing {
-    background-color: var(--job-status-interviewing);
+.job-tracker-activity-dot.status-interview {
+    background-color: var(--job-status-interview);
 }
 
-.job-tracker-activity-dot.status-offer {
-    background-color: var(--job-status-offer);
-}
-
-.job-tracker-activity-dot.status-accepted {
-    background-color: var(--job-status-accepted);
+.job-tracker-activity-dot.status-let-s-hope {
+    background-color: var(--job-status-let-s-hope);
 }
 
 .job-tracker-activity-dot.status-rejected {
     background-color: var(--job-status-rejected);
-}
-
-.job-tracker-activity-dot.status-withdrawn {
-    background-color: var(--job-status-withdrawn);
 }
 
 .job-tracker-activity-dot.status-ghosted {

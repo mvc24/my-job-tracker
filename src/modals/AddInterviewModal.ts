@@ -127,8 +127,8 @@ export class AddInterviewModal extends BaseApplicationModal {
 
 		// Update Status Toggle
 		new Setting(contentEl)
-			.setName("Update Status to 'Interviewing'")
-			.setDesc("Automatically advance the application status if currently 'Applied' or 'Screening'")
+			.setName("Update Status to 'Interview'")
+			.setDesc("Automatically advance the application status if it is not yet 'Interview', 'Let's hope' or final")
 			.addToggle((toggle) =>
 				toggle.setValue(this.updateStatusToInterviewing).onChange((value) => {
 					this.updateStatusToInterviewing = value;

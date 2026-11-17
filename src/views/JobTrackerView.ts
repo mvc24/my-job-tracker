@@ -8,7 +8,13 @@ import {
   normalizePath,
 } from 'obsidian';
 import JobApplicationTrackerPlugin from '../main';
-import { JobApplication, JobSortField, JobStatus } from '../types';
+import {
+  FINAL_STATUSES,
+  JobApplication,
+  JobSortField,
+  JobStatus,
+  NOT_APPLIED_STATUSES,
+} from '../types';
 import { sanitizeUrl } from '../services/ApplicationService';
 import { VIEW_TYPE_JOB_TRACKER } from '../constants';
 import { NewApplicationModal } from '../modals/NewApplicationModal';
@@ -562,7 +568,7 @@ export class JobTrackerView extends ItemView {
 
   /**
    * Extracts the chronological sequence of statuses that the application entered/exited.
-   * Resolves final statuses (Accepted, Rejected, Withdrawn, Ghosted) so only the latest
+   * Resolves final statuses (Rejected, Ghosted) so only the latest
    * current final status is kept at the end of the chain, preventing multiple final transitions.
    */
   getVisitedStatuses(app: JobApplication): string[] {
@@ -590,27 +596,25 @@ export class JobTrackerView extends ItemView {
       rawVisited.push(app.status);
     }
 
-    // 3. Fallback: If application has interview records but "Interviewing" isn't in history
+    // 3. Fallback: If application has interview records but "Interview" isn't in history
     if (
       app.interviews &&
       app.interviews.length > 0 &&
-      !rawVisited.includes('Interviewing')
+      !rawVisited.includes('Interview')
     ) {
       const last = rawVisited[rawVisited.length - 1];
-      if (
-        ['Offer', 'Accepted', 'Rejected', 'Ghosted', 'Withdrawn'].includes(last)
-      ) {
-        rawVisited.splice(rawVisited.length - 1, 0, 'Interviewing');
+      if (["Let's hope", 'Rejected', 'Ghosted'].includes(last)) {
+        rawVisited.splice(rawVisited.length - 1, 0, 'Interview');
       } else {
-        rawVisited.push('Interviewing');
+        rawVisited.push('Interview');
       }
     }
 
-    // 4. Ensure "Applied" is in the chain if application was submitted beyond Wishlist
+    // 4. Ensure "Applied" is in the chain if application was submitted
     if (rawVisited.length === 0) {
       rawVisited.push(app.status || 'Applied');
     } else if (
-      rawVisited[0] !== 'Wishlist' &&
+      !NOT_APPLIED_STATUSES.includes(rawVisited[0]) &&
       !rawVisited.includes('Applied')
     ) {
       rawVisited.unshift('Applied');
@@ -628,7 +632,7 @@ export class JobTrackerView extends ItemView {
     }
 
     // 6. Enforce Single Final Status Rule
-    const finalStatuses = ['Accepted', 'Rejected', 'Withdrawn', 'Ghosted'];
+    const finalStatuses: readonly string[] = FINAL_STATUSES;
     let lastFinalStatus: string | null = null;
 
     for (let i = visited.length - 1; i >= 0; i--) {
@@ -669,31 +673,25 @@ export class JobTrackerView extends ItemView {
 
     const appliedApps = appHistories.filter(
       (h) =>
-        h.visited.some((st) => st !== 'Wishlist') ||
-        h.app.status !== 'Wishlist',
+        h.visited.some((st) => !NOT_APPLIED_STATUSES.includes(st)) ||
+        !NOT_APPLIED_STATUSES.includes(h.app.status),
     );
     const wishlistApps = appHistories.filter(
       (h) =>
-        h.app.status === 'Wishlist' &&
-        !h.visited.some((st) => st !== 'Wishlist'),
+        NOT_APPLIED_STATUSES.includes(h.app.status) &&
+        !h.visited.some((st) => !NOT_APPLIED_STATUSES.includes(st)),
     );
     const appliedTotal = appliedApps.length;
 
-    const activeStatuses: JobStatus[] = [
-      'Applied',
-      'Screening',
-      'Interviewing',
-      'Offer',
-    ];
+    const activeStatuses: JobStatus[] = ['Applied', 'Interview', "Let's hope"];
     const activeApps = this.applications.filter((a) =>
       activeStatuses.includes(a.status),
     );
 
     const interviewApps = appliedApps.filter(
       (h) =>
-        h.visited.includes('Interviewing') ||
-        h.visited.includes('Offer') ||
-        h.visited.includes('Accepted') ||
+        h.visited.includes('Interview') ||
+        h.visited.includes("Let's hope") ||
         (h.app.interviews && h.app.interviews.length > 0),
     );
 
@@ -712,13 +710,7 @@ export class JobTrackerView extends ItemView {
     const respondedApps = appliedApps.filter(
       (h) =>
         h.visited.some((st) =>
-          [
-            'Screening',
-            'Interviewing',
-            'Offer',
-            'Accepted',
-            'Rejected',
-          ].includes(st),
+          ['Interview', "Let's hope", 'Rejected'].includes(st),
         ) ||
         (h.app.interviews && h.app.interviews.length > 0),
     );
@@ -764,7 +756,7 @@ export class JobTrackerView extends ItemView {
       };
       entry.total++;
       if (
-        h.visited.includes('Interviewing') ||
+        h.visited.includes('Interview') ||
         (h.app.interviews && h.app.interviews.length > 0)
       ) {
         entry.interviews++;
